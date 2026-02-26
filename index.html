@@ -1,107 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <title>Çağatay Çallı</title>
+  <title>Çağatay Çallı — Senior ML/AI Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Çağatay Çallı – Senior ML/AI Engineer – LLMs, Search & Recommendations." />
+  <meta name="description"
+    content="Çağatay Çallı — Senior ML/AI Engineer specializing in LLMs, Search & Recommendation Systems. Production ML background across Udemy, bp, DuckDuckGo and more." />
+  <link rel="canonical" href="https://cagataycalli.com" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Çağatay Çallı — Senior ML/AI Engineer" />
+  <meta property="og:description"
+    content="LLMs · Search · Recommendation Systems. Production ML background across Udemy, bp, and more." />
+  <meta property="og:url" content="https://cagataycalli.com" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Çağatay Çallı — Senior ML/AI Engineer" />
+  <meta name="twitter:description"
+    content="LLMs · Search · Recommendation Systems. Production ML background across Udemy, bp, and more." />
+
+  <!-- JSON-LD Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Çağatay Çallı",
+    "jobTitle": "Senior ML/AI Engineer",
+    "url": "https://cagataycalli.com",
+    "email": "cagataycalli@gmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/cagataycalli",
+      "https://github.com/faraday"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Middle East Technical University"
+    },
+    "knowsAbout": ["Machine Learning", "NLP", "LLMs", "Search", "Recommendation Systems", "Data Engineering"]
+  }
+  </script>
+
+  <!-- Favicons -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="/favicon-32x32.png" type="image/png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    /* ─── Design tokens ─── */
+    :root {
+      --bg: #f8fafc;
+      --bg-card: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --accent: #0ea5e9;
+      --accent-hover: #0284c7;
+      --accent-subtle: #e0f2fe;
+      --border: #e2e8f0;
+
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.07);
+      --radius: 12px;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #0f172a;
+        --bg-card: #1e293b;
+        --text: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --accent: #38bdf8;
+        --accent-hover: #7dd3fc;
+        --accent-subtle: rgba(56, 189, 248, 0.1);
+        --border: #334155;
+
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    /* ─── Reset & base ─── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
       margin: 0;
-      padding: 32px 16px 48px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
       -webkit-font-smoothing: antialiased;
-      background: #f9fafb;
-      color: #0f172a;
+      -moz-osx-font-smoothing: grayscale;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
+
     main {
-      max-width: 768px;
+      max-width: 720px;
       margin: 0 auto;
+      padding: 48px 20px 64px;
     }
-    h1 {
-      font-size: 26px;
-      margin: 0 0 6px;
-      letter-spacing: -0.03em;
-      font-weight: 600;
-    }
-    h2 {
-      font-size: 18px;
-      margin: 18px 0 6px;
-      font-weight: 600;
-    }
-    p {
-      margin: 0 0 8px;
-      line-height: 1.6;
-      font-size: 15px;
-    }
-    ul {
-      margin: 4px 0 12px;
-      padding-left: 20px;
-      line-height: 1.6;
-      font-size: 15px;
-    }
-    li {
-      margin-bottom: 4px;
-    }
+
     a {
-      color: #2563eb;
+      color: var(--accent);
       text-decoration: none;
+      transition: color 0.15s ease;
     }
+
     a:hover {
-      text-decoration: underline;
+      color: var(--accent-hover);
     }
-    .muted {
-      color: #6b7280;
+
+    /* ─── Hero ─── */
+    .hero {
+      text-align: center;
+      padding: 24px 0 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .hero .tagline {
+      font-size: 17px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .hero .location {
       font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .hero-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      transition: all 0.2s ease;
+    }
+
+    .hero-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-links svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ─── Sections ─── */
+    section {
+      margin-bottom: 36px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    section:nth-child(2) {
+      animation-delay: 0.05s;
+    }
+
+    section:nth-child(3) {
+      animation-delay: 0.1s;
+    }
+
+    section:nth-child(4) {
+      animation-delay: 0.15s;
+    }
+
+    section:nth-child(5) {
+      animation-delay: 0.2s;
+    }
+
+    section:nth-child(6) {
+      animation-delay: 0.25s;
+    }
+
+    section:nth-child(7) {
+      animation-delay: 0.3s;
+    }
+
+    section:nth-child(8) {
+      animation-delay: 0.35s;
+    }
+
+    section:nth-child(9) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── Narrative list ─── */
+    .narrative-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .narrative-list li {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .narrative-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .narrative-list strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .narrative-list .muted {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* ─── Philosophy list ─── */
+    .philosophy-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .philosophy-list li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .philosophy-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ─── Projects ─── */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-row {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .project-row strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ─── Education ─── */
+    .edu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 2px 12px;
+      font-size: 14px;
+    }
+
+    .edu-degree {
+      font-weight: 600;
+    }
+
+    .edu-school {
+      color: var(--text-secondary);
+    }
+
+    .edu-year {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .edu-detail {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: -4px;
+    }
+
+    /* ─── CV button ─── */
+    .cv-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .cv-btn:hover {
+      background: var(--accent-hover);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cv-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      text-align: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 480px) {
+      main {
+        padding: 32px 16px 48px;
+      }
+
+      .hero {
+        padding: 16px 0 28px;
+      }
     }
   </style>
 </head>
+
 <body>
   <main>
-    <h1>Çağatay Çallı</h1>
-    <p>Senior ML/AI engineer – LLMs, search &amp; recommendations.</p>
-    <p class="muted">
-      Based in Ankara, Turkey. I mostly work remotely with product and data teams.
-    </p>
+    <!-- ─── Hero ─── -->
+    <header class="hero">
+      <h1>Çağatay Çallı</h1>
+      <p class="tagline">Senior ML/AI Engineer · LLMs · Search · Recommendation Systems</p>
+      <nav class="hero-links">
+        <a href="mailto:cagataycalli@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          Email
+        </a>
+        <a href="https://www.linkedin.com/in/cagataycalli" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/faraday" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg>
+          GitHub
+        </a>
+      </nav>
+    </header>
 
-    <h2>A few things about me</h2>
-    <ul>
-      <li>Started in R&amp;D and text mining (semantic search, NLP, GSoC, academic work on Explicit Semantic Analysis).</li>
-      <li>Co-founded a social media analytics startup.</li>
-      <li>Helped scale an online education marketplace, focusing on search, recommendations and ML infrastructure.</li>
-      <li>Built cloud data platforms and pipelines for a large energy company.</li>
-      <li>Now independent, I help teams design and ship LLM, search and recommender projects end-to-end.</li>
-    </ul>
+    <!-- ─── A few things about me ─── -->
+    <section>
+      <h2 class="section-title">A few things about me</h2>
+      <ul class="narrative-list">
+        <li>Started in R&D and text mining — semantic search, NLP, a <a
+            href="http://etd.lib.metu.edu.tr/upload/12612554/index.pdf" target="_blank" rel="noopener">thesis on
+            Explicit Semantic Analysis and search result clustering</a>, and <a
+            href="https://web.archive.org/web/20250425052214/https://wiki.eclipse.org/Eclipse_search_plugin:_providing_a_better,_faster,_more_relevant_Eclipse_search."
+            target="_blank" rel="noopener">Google Summer of Code</a> at the Eclipse Foundation.</li>
+        <li>Co-founded a social media analytics startup.</li>
+        <li>Helped scale <strong><a href="https://www.udemy.com" target="_blank" rel="noopener">Udemy</a></strong>,
+          focusing on search, recommendations and ML infrastructure.</li>
+        <li>Built cloud data platforms and Spark pipelines at <strong><a href="https://www.bp.com" target="_blank"
+              rel="noopener">bp</a></strong> across globally distributed teams.
+        </li>
+        <li>Shipped the <a href="https://github.com/duckduckgo/android-search-and-stories" target="_blank"
+            rel="noopener">DuckDuckGo Android app</a> early on.</li>
+        <li>Now independent, I help teams design and ship LLM, search and recommender projects end-to-end.</li>
+      </ul>
+    </section>
 
-    <h2>What I work on</h2>
-    <ul>
-      <li>LLM-based information extraction, especially on messy real-world text.</li>
-      <li>Search and ranking systems for marketplaces and content platforms.</li>
-      <li>Recommender systems and cross-sell features close to the product.</li>
-      <li>Data platforms and pipelines on modern data stacks (Spark, Hive, AWS).</li>
-      <li>ML plumbing: evaluation, deployment paths, and the boring bits that keep models running.</li>
-    </ul>
-    <p class="muted">
-      Sometimes I do mobile apps too, mostly Android.
-    </p>
+    <!-- ─── What I work on ─── -->
+    <section>
+      <h2 class="section-title">What I work on</h2>
+      <div class="philosophy-list" role="list">
+        <div role="listitem" class="project-row">LLM-based information extraction, especially on messy real-world text.
+        </div>
+        <div role="listitem" class="project-row">Search and ranking systems for marketplaces and content platforms.
+        </div>
+        <div role="listitem" class="project-row">Recommender systems and cross-sell features close to the product.</div>
+        <div role="listitem" class="project-row">Data platforms and pipelines on modern stacks (Spark, Hive, AWS).</div>
+        <div role="listitem" class="project-row">ML plumbing: evaluation, deployment, and the boring bits that keep
+          models running.</div>
+      </div>
+    </section>
 
-    <h2>Thoughts about ML &amp; data work</h2>
-    <ul>
-      <li>Most ML problems are product and data problems in disguise.</li>
-      <li>Simple, well-instrumented models in production beat fancy models stuck in notebooks.</li>
-      <li>Owning the full loop (data → model → serving → eval) matters more than owning a narrow slice.</li>
-      <li>Clear metrics and honest evaluation save more time than any clever architecture.</li>
-    </ul>
+    <!-- ─── Philosophy ─── -->
+    <section>
+      <h2 class="section-title">Philosophy</h2>
+      <ul class="philosophy-list">
+        <li>Most ML problems are product and data problems in disguise.</li>
+        <li>Simple, well-instrumented models in production beat fancy models stuck in notebooks.</li>
+        <li>Owning the full loop (data → model → serving → eval) matters more than owning a narrow slice.</li>
+        <li>Clear metrics and honest evaluation save more time than any clever architecture.</li>
+      </ul>
+    </section>
 
-    <h2>Contact</h2>
-    <p>
-      Email: <a href="mailto:cagataycalli@gmail.com">cagataycalli@gmail.com</a><br />
-      LinkedIn: <a href="https://www.linkedin.com/in/cagataycalli" target="_blank" rel="noopener">linkedin.com/in/cagataycalli</a><br />
-      GitHub: <a href="https://github.com/faraday" target="_blank" rel="noopener">github.com/faraday</a>
-    </p>
+    <!-- ─── Projects & Publications ─── -->
+    <section>
+      <h2 class="section-title">Selected Projects & Publications</h2>
+      <div class="projects">
+        <p class="project-row">"EasyESA: A Low-effort Infrastructure for Explicit Semantic Analysis" — <em><a
+              href="https://www.edwardcurry.org/publications/easyesa_demo_2014.pdf" target="_blank" rel="noopener">ISWC
+              2014</a></em></p>
+        <p class="project-row"><strong><a href="https://github.com/faraday/wikiprep-esa" target="_blank"
+              rel="noopener">Wikiprep-ESA</a></strong> — Open-source Explicit Semantic Analysis (Python, Lucene)</p>
+        <p class="project-row"><strong><a href="https://play.google.com/store/apps/details?id=org.eksin" target="_blank"
+              rel="noopener">Ekşin</a></strong> — Android client for Ekşi Sözlük, Turkey's largest social dictionary
+          (30K+ users)</p>
+        <p class="project-row"><a
+            href="https://web.archive.org/web/20250425052214/https://wiki.eclipse.org/Eclipse_search_plugin:_providing_a_better,_faster,_more_relevant_Eclipse_search."
+            target="_blank" rel="noopener">Google Summer of Code 2007</a> — <em>The Eclipse Foundation</em> (Eclipse
+          Platform & ECF)</p>
+      </div>
+    </section>
+
+    <!-- ─── Education ─── -->
+    <section>
+      <h2 class="section-title">Education</h2>
+      <div class="edu-grid">
+        <div class="edu-row">
+          <span><span class="edu-degree">M.Sc. Computer Engineering</span> <span class="edu-school">— <a
+                href="https://ceng.metu.edu.tr/" target="_blank" rel="noopener">Middle East
+                Technical University</a></span></span>
+          <span class="edu-year">2010</span>
+        </div>
+        <p class="edu-detail"><a href="http://etd.lib.metu.edu.tr/upload/12612554/index.pdf" target="_blank"
+            rel="noopener">Thesis</a>: "Improving search result clustering by integrating semantic
+          information from Wikipedia"</p>
+        <div class="edu-row">
+          <span><span class="edu-degree">B.Sc. Computer Engineering</span> <span class="edu-school">— <a
+                href="https://ceng.metu.edu.tr/" target="_blank" rel="noopener">Middle East
+                Technical University</a></span></span>
+          <span class="edu-year">2007</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Çağatay Çallı</p>
+    </footer>
   </main>
 </body>
+
 </html>
